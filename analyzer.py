@@ -10,3 +10,9 @@ def character_count():
             else:
                 count += 1
         return count
+
+
+def line_count(list):
+    for line in list:
+        lenght = len(list)
+    return lenght
