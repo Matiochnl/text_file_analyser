@@ -16,3 +16,5 @@ def line_count(list):
     for line in list:
         lenght = len(list)
     return lenght
+
+
