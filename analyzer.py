@@ -30,3 +30,23 @@ def count_ratio_a_to_e(list_str):
     result = round(result, 3)
     return result
 
+    
+def words(open_file):
+    text = open_file
+
+    word = ""
+    for line in text:
+        word += " "
+        for char in line:
+            word += str(char)
+    list_of_words = word.split()
+    print(list_of_words)
+    return list_of_words
+
+
+def how_many_words(words):
+
+    lenth = len(words)
+    print("how many words : ",lenth)
+    return lenth
+
