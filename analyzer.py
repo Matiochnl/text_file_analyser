@@ -34,9 +34,9 @@ def count_ratio_a_to_e(list_str):
     a = 0
     e = 0
     for element in list_str:
-        if "a" in element:
+        if "a" in element or "A" in element:
             a += 1
-        if "e" in element:
+        if "e" in element or "E" in element:
             e += 1
     result = a / e 
     result = round(result, 3)
