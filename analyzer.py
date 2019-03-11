@@ -61,3 +61,15 @@ def how_many_words(words):
     lenth = len(words)
     print("how many words : ",lenth)
     return lenth
+
+
+def diferent_word_count(words):
+    list_words = (words)
+    counter = []
+
+    for element in list_words:
+        if element not in counter:
+            counter.append(element)
+
+    diferent_words = len(counter)
+    return diferent_words
