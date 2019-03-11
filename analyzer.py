@@ -18,3 +18,15 @@ def line_count(list):
     return lenght
 
 
+def count_ratio_a_to_e(list_str):
+    a = 0
+    e = 0
+    for element in list_str:
+        if "a" in element:
+            a += 1
+        if "e" in element:
+            e += 1
+    result = a / e 
+    result = round(result, 3)
+    return result
+
