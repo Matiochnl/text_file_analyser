@@ -52,7 +52,7 @@ def words(open_file):
         for char in line:
             word += str(char)
     list_of_words = word.split()
-    print(list_of_words)
+    #print(list_of_words)
     return list_of_words
 
 
@@ -73,3 +73,18 @@ def diferent_word_count(words):
 
     diferent_words = len(counter)
     return diferent_words
+
+
+
+def top_10_word_count(words):
+    my_dict = {}
+    for i in range(len(words)):
+        my_dict[words[i]] = words.count(words[i])
+    sorted_words = sorted(my_dict.items(), reverse=True, key=lambda x: x[1])
+    topten = sorted_words[:10]
+    for ele in topten:
+        print(ele)
+    return topten
+
+
+top_10_word_count(words(data_manager.open_file("resources/input.txt")))
