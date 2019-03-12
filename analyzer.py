@@ -1,6 +1,11 @@
 import data_manager
 
 
+def read_from_file():
+    result = data_manager.open_file("resources/input.txt")
+    return result
+
+
 def character_count():
     count = 0
     for elem in data_manager.open_file("resources/input.txt"):
@@ -12,10 +17,9 @@ def character_count():
         return count
 
 
-def line_count(list):
-    for line in list:
-        lenght = len(list)
-    return lenght
+def line_count(file_object):
+    file_object = read_from_file()
+    return len(file_object)
 
 
 def alphanumeric_character_count():
@@ -59,7 +63,7 @@ def words(open_file):
 def how_many_words(words):
 
     lenth = len(words)
-    print("how many words : ",lenth)
+    print("how many words : ", lenth)
     return lenth
 
 
@@ -87,4 +91,8 @@ def top_10_word_count(words):
     return topten
 
 
-top_10_word_count(words(data_manager.open_file("resources/input.txt")))
+def save_to_file():
+    results = [character_count(), line_count(list), alphanumeric_character_count(), words(open_file), how_many_words(words),
+               diferent_word_count(words), top_10_word_count(words)]
+    print(results)
+
