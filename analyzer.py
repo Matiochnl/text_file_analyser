@@ -73,10 +73,8 @@ def words(open_file):
 
 
 def how_many_words(words):
-
-    lenth = len(words)
-    print("how many words : ",lenth)
-    return lenth
+    lenght = len(words)
+    return lenght
 
 
 def diferent_word_count(words):
