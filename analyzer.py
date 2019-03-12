@@ -1,4 +1,5 @@
 import data_manager
+import datetime
 
 
 def read_from_file():
@@ -14,7 +15,7 @@ def character_count():
                 count = count
             else:
                 count += 1
-        return count
+    return count
 
 
 def line_count(file_object):
@@ -79,7 +80,7 @@ def words(open_file):
 
 def how_many_words(words):
 
-    lenght = len(words)
+    lenght = len(words(read_from_file()))
     return lenght
 
 
@@ -97,19 +98,33 @@ def diferent_word_count(words):
 
 def top_10_word_count(words):
     my_dict = {}
+    words = words(open_file=read_from_file())
     for i in range(len(words)):
         my_dict[words[i]] = words.count(words[i])
     sorted_words = sorted(my_dict.items(), reverse=True, key=lambda x: x[1])
     topten = sorted_words[:10]
-    # for ele in topten:
-    # print(ele)
     return topten
 
 
 def save_to_file():
-    results = [character_count(), line_count(list), alphanumeric_character_count(), words(open_file=read_from_file()), how_many_words(words),
-               diferent_word_count(words), top_10_word_count(words)]
-    print(results)
+    results = [str(character_count()) + ": Character amount",
+               str(line_count(file_object=read_from_file())) + ": Line amount",
+               str(alphanumeric_character_count()) +
+               ": Alphanumeric character amount", words(
+               open_file=read_from_file()),
+               str(how_many_words(words)) + ": How many words in file", str(
+                   diferent_word_count(words)) + ": Words not repeated",
+               str(top_10_word_count(words)) + ": How many times words are used"]
+    actual_time = datetime.datetime.now()
+    filename = "{year}_{month}_{day}__{hour}_{minutes}_{seconds}.txt".format(
+        year=actual_time.year,
+        month=actual_time.month,
+        day=actual_time.day,
+        hour=actual_time.hour,
+        minutes=actual_time.minute,
+        seconds=actual_time.second)
+
+    data_manager.write_data_to_file(results, filename)
 
 
 def sort_by_appearance_count(words):
