@@ -82,9 +82,18 @@ def top_10_word_count(words):
         my_dict[words[i]] = words.count(words[i])
     sorted_words = sorted(my_dict.items(), reverse=True, key=lambda x: x[1])
     topten = sorted_words[:10]
-    for ele in topten:
-        print(ele)
+    #for ele in topten:
+        #print(ele)
     return topten
 
 
-top_10_word_count(words(data_manager.open_file("resources/input.txt")))
+#top_10_word_count(words(data_manager.open_file("resources/input.txt")))
+
+
+
+def sort_by_appearance_count(words):
+    my_dict = {}
+    for i in range(len(words)):
+        my_dict[words[i]] = words.count(words[i])
+    sorted_words = sorted(my_dict.items(), reverse=True, key=lambda x: x[1])
+    return sorted_words
