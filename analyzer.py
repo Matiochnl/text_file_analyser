@@ -24,7 +24,8 @@ def line_count(file_object):
 
 def alphanumeric_character_count():
     count = 0
-    alphanumeric_characters = ["qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890"]
+    alphanumeric_characters = [
+        "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890"]
     for file_element in data_manager.open_file("resources/input.txt"):
         for element in file_element:
             for alphanumeric_characters_element in alphanumeric_characters:
@@ -41,7 +42,7 @@ def count_ratio_a_to_e(list_str):
             a += 1
         if "e" in element or "E" in element:
             e += 1
-    result = a / e 
+    result = a / e
     result = round(result, 3)
     return result
 
@@ -72,26 +73,29 @@ def words(open_file):
         for char in line:
             word += str(char)
     list_of_words = word.split()
-    #print(list_of_words)
+    # print(list_of_words)
     return list_of_words
 
 
 def how_many_words(words):
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8a001e2533570bd6fcd883b5c2879ca21781158c
     lenght = len(words)
     return lenght
 
 
 def diferent_word_count(words):
-    list_words = (words)
+    list_of_words = (words(open_file=read_from_file()))
     counter = []
 
-    for element in list_words:
+    for element in list_of_words:
         if element not in counter:
             counter.append(element)
 
     diferent_words = len(counter)
     return diferent_words
-
 
 
 def top_10_word_count(words):
@@ -100,18 +104,15 @@ def top_10_word_count(words):
         my_dict[words[i]] = words.count(words[i])
     sorted_words = sorted(my_dict.items(), reverse=True, key=lambda x: x[1])
     topten = sorted_words[:10]
-    #for ele in topten:
-        #print(ele)
+    # for ele in topten:
+    # print(ele)
     return topten
 
 
 def save_to_file():
-    results = [character_count(), line_count(list), alphanumeric_character_count(), words(open_file), how_many_words(words),
+    results = [character_count(), line_count(list), alphanumeric_character_count(), words(open_file=read_from_file()), how_many_words(words),
                diferent_word_count(words), top_10_word_count(words)]
     print(results)
-
-#top_10_word_count(words(data_manager.open_file("resources/input.txt")))
-
 
 
 def sort_by_appearance_count(words):
@@ -120,3 +121,6 @@ def sort_by_appearance_count(words):
         my_dict[words[i]] = words.count(words[i])
     sorted_words = sorted(my_dict.items(), reverse=True, key=lambda x: x[1])
     return sorted_words
+
+
+save_to_file()
