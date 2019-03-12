@@ -77,15 +77,8 @@ def words(open_file):
 
 
 def how_many_words(words):
-<<<<<<< HEAD
     lenght = len(words)
     return lenght
-=======
-
-    lenth = len(words)
-    print("how many words : ", lenth)
-    return lenth
->>>>>>> 9148cbcfaa96434effe797b27d5a752e607b7282
 
 
 def diferent_word_count(words):
