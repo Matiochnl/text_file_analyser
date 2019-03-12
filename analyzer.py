@@ -33,9 +33,9 @@ def count_ratio_a_to_e(list_str):
     a = 0
     e = 0
     for element in list_str:
-        if "a" in element:
+        if "a" in element or "A" in element:
             a += 1
-        if "e" in element:
+        if "e" in element or "E" in element:
             e += 1
     result = a / e 
     result = round(result, 3)
@@ -68,7 +68,7 @@ def words(open_file):
         for char in line:
             word += str(char)
     list_of_words = word.split()
-    print(list_of_words)
+    #print(list_of_words)
     return list_of_words
 
 
@@ -77,3 +77,30 @@ def how_many_words(words):
     lenth = len(words)
     print("how many words : ",lenth)
     return lenth
+
+
+def diferent_word_count(words):
+    list_words = (words)
+    counter = []
+
+    for element in list_words:
+        if element not in counter:
+            counter.append(element)
+
+    diferent_words = len(counter)
+    return diferent_words
+
+
+
+def top_10_word_count(words):
+    my_dict = {}
+    for i in range(len(words)):
+        my_dict[words[i]] = words.count(words[i])
+    sorted_words = sorted(my_dict.items(), reverse=True, key=lambda x: x[1])
+    topten = sorted_words[:10]
+    for ele in topten:
+        print(ele)
+    return topten
+
+
+top_10_word_count(words(data_manager.open_file("resources/input.txt")))
