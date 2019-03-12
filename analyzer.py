@@ -35,10 +35,10 @@ def alphanumeric_character_count():
     return count
 
 
-def count_ratio_a_to_e(list_str):
+def count_ratio_a_to_e():
     a = 0
     e = 0
-    for element in list_str:
+    for element in data_manager.open_file_string("resources/input.txt"):
         if "a" in element or "A" in element:
             a += 1
         if "e" in element or "E" in element:
@@ -65,7 +65,7 @@ def consonant_to_vowel_ratio():
     return result
 
 
-def words(open_file):
+def change_letters_into_words(open_file):
     text = open_file
 
     word = ""
@@ -84,8 +84,8 @@ def how_many_words(words):
     return lenght
 
 
-def diferent_word_count(words):
-    list_of_words = (words(open_file=read_from_file()))
+def diferent_word_count(change_letters_into_words):
+    list_of_words = (change_letters_into_words(open_file=read_from_file()))
     counter = []
 
     for element in list_of_words:
@@ -96,12 +96,12 @@ def diferent_word_count(words):
     return diferent_words
 
 
-def top_10_word_count(words):
-    my_dict = {}
-    words = words(open_file=read_from_file())
-    for i in range(len(words)):
-        my_dict[words[i]] = words.count(words[i])
-    sorted_words = sorted(my_dict.items(), reverse=True, key=lambda x: x[1])
+def top_10_word_count(change_letters_into_words):
+    results = {}
+    change_letters_into_words = change_letters_into_words(open_file=read_from_file())
+    for i in range(len(change_letters_into_words)):
+        results[change_letters_into_words[i]] = change_letters_into_words.count(change_letters_into_words[i])
+    sorted_words = sorted(results.items(), reverse=True, key=lambda x: x[1])
     topten = sorted_words[:10]
     return topten
 
@@ -110,11 +110,11 @@ def save_to_file():
     results = [str(character_count()) + ": Character amount",
                str(line_count(file_object=read_from_file())) + ": Line amount",
                str(alphanumeric_character_count()) +
-               ": Alphanumeric character amount", words(
+               ": Alphanumeric character amount", change_letters_into_words(
                open_file=read_from_file()),
-               str(how_many_words(words)) + ": How many words in file", str(
-                   diferent_word_count(words)) + ": Words not repeated",
-               str(top_10_word_count(words)) + ": How many times words are used"]
+               str(how_many_words(change_letters_into_words)) + ": How many words in file", str(
+                   diferent_word_count(change_letters_into_words)) + ": Words not repeated",
+               str(top_10_word_count(change_letters_into_words)) + ": How many times words are used"]
     actual_time = datetime.datetime.now()
     filename = "{year}_{month}_{day}__{hour}_{minutes}_{seconds}.txt".format(
         year=actual_time.year,
@@ -127,10 +127,10 @@ def save_to_file():
     data_manager.write_data_to_file(results, filename)
 
 
-def sort_by_appearance_count(words):
+def sort_by_appearance_count(change_letters_into_words):
     my_dict = {}
-    for i in range(len(words)):
-        my_dict[words[i]] = words.count(words[i])
+    for i in range(len(change_letters_into_words)):
+        my_dict[change_letters_into_words[i]] = change_letters_into_words.count(change_letters_into_words[i])
     sorted_words = sorted(my_dict.items(), reverse=True, key=lambda x: x[1])
     return sorted_words
 
