@@ -14,7 +14,7 @@ def character_count():
                 count = count
             else:
                 count += 1
-        return count
+    return count
 
 
 def line_count(file_object):
@@ -34,10 +34,10 @@ def alphanumeric_character_count():
     return count
 
 
-def count_ratio_a_to_e(list_str):
+def count_ratio_a_to_e():
     a = 0
     e = 0
-    for element in list_str:
+    for element in data_manager.open_file_string("resources/input.txt"):
         if "a" in element or "A" in element:
             a += 1
         if "e" in element or "E" in element:
@@ -78,10 +78,6 @@ def words(open_file):
 
 
 def how_many_words(words):
-<<<<<<< HEAD
-=======
-
->>>>>>> 8a001e2533570bd6fcd883b5c2879ca21781158c
     lenght = len(words)
     return lenght
 
@@ -123,4 +119,3 @@ def sort_by_appearance_count(words):
     return sorted_words
 
 
-save_to_file()
