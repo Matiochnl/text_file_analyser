@@ -1,15 +1,24 @@
 import data_manager
+
 import datetime
+import sys
+
+file_name = sys.argv[1]
 
 
 def read_from_file():
-    result = data_manager.open_file("resources/input.txt")
+    result = data_manager.open_file(file_name)
+    return result
+
+
+def read_from_file_string():
+    result = data_manager.open_file_string(file_name)
     return result
 
 
 def character_count():
     count = 0
-    for file_element in data_manager.open_file("resources/input.txt"):
+    for file_element in data_manager.open_file(file_name):
         for element in file_element:
             if element == " ":
                 count = count
@@ -18,16 +27,15 @@ def character_count():
     return count
 
 
-def line_count(file_object):
-    file_object = read_from_file()
-    return len(file_object)
+def line_count():
+    return len(read_from_file())
 
 
 def alphanumeric_character_count():
     count = 0
     alphanumeric_characters = [
         "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890"]
-    for file_element in data_manager.open_file("resources/input.txt"):
+    for file_element in data_manager.open_file(file_name):
         for element in file_element:
             for alphanumeric_characters_element in alphanumeric_characters:
                 if element in alphanumeric_characters_element:
@@ -38,7 +46,7 @@ def alphanumeric_character_count():
 def count_ratio_a_to_e():
     a = 0
     e = 0
-    for element in data_manager.open_file_string("resources/input.txt"):
+    for element in read_from_file_string(file_name):
         if "a" in element or "A" in element:
             a += 1
         if "e" in element or "E" in element:
@@ -53,7 +61,7 @@ def consonant_to_vowel_ratio():
     vowel = ["aeiouAEIOU"]
     consonant_count = 0
     vowel_count = 0
-    for character in data_manager.open_file_string("resources/input.txt"):
+    for character in read_from_file_string(file_name):
         for consonant_element in consonant:
             if character in consonant_element:
                 consonant_count += 1
@@ -65,11 +73,9 @@ def consonant_to_vowel_ratio():
     return result
 
 
-def change_letters_into_words(open_file):
-    text = open_file
-
+def change_letters_into_words():
     word = ""
-    for line in text:
+    for line in read_from_file():
         word += " "
         for char in line:
             word += str(char)
@@ -78,29 +84,25 @@ def change_letters_into_words(open_file):
     return list_of_words
 
 
-def how_many_words(words):
-
-    lenght = len(words(read_from_file()))
-    return lenght
+def how_many_words():
+    return len(change_letters_into_words())
 
 
-def diferent_word_count(change_letters_into_words):
-    list_of_words = (change_letters_into_words(open_file=read_from_file()))
+def diferent_word_count():
     counter = []
 
-    for element in list_of_words:
+    for element in change_letters_into_words():
         if element not in counter:
             counter.append(element)
 
-    diferent_words = len(counter)
-    return diferent_words
+    return len(counter)
 
 
 def top_10_word_count(change_letters_into_words):
     results = {}
-    change_letters_into_words = change_letters_into_words(open_file=read_from_file())
-    for i in range(len(change_letters_into_words)):
-        results[change_letters_into_words[i]] = change_letters_into_words.count(change_letters_into_words[i])
+    list_of_words = change_letters_into_words()
+    for i in range(len(list_of_words)):
+        results[list_of_words[i]] = list_of_words.count(list_of_words[i])
     sorted_words = sorted(results.items(), reverse=True, key=lambda x: x[1])
     topten = sorted_words[:10]
     return topten
@@ -108,12 +110,11 @@ def top_10_word_count(change_letters_into_words):
 
 def save_to_file():
     results = [str(character_count()) + ": Character amount",
-               str(line_count(file_object=read_from_file())) + ": Line amount",
+               str(line_count()) + ": Line amount",
                str(alphanumeric_character_count()) +
-               ": Alphanumeric character amount", change_letters_into_words(
-               open_file=read_from_file()),
-               str(how_many_words(change_letters_into_words)) + ": How many words in file", str(
-                   diferent_word_count(change_letters_into_words)) + ": Words not repeated",
+               ": Alphanumeric character amount", change_letters_into_words(),
+               str(how_many_words()) + ": How many words in file", str(
+                   diferent_word_count()) + ": Words not repeated",
                str(top_10_word_count(change_letters_into_words)) + ": How many times words are used"]
     actual_time = datetime.datetime.now()
     filename = "{year}_{month}_{day}__{hour}_{minutes}_{seconds}.txt".format(
