@@ -64,7 +64,7 @@ def consonant_to_vowel_ratio():
     return result
 
 
-def words(open_file):
+def change_letters_into_words(open_file):
     text = open_file
 
     word = ""
@@ -77,13 +77,13 @@ def words(open_file):
     return list_of_words
 
 
-def how_many_words(words):
-    lenght = len(words)
+def how_many_words(change_letters_into_words):
+    lenght = lenchange_letters_into_words()
     return lenght
 
 
-def diferent_word_count(words):
-    list_of_words = (words(open_file=read_from_file()))
+def diferent_word_count(change_letters_into_words):
+    list_of_words = (change_letters_into_words(open_file=read_from_file()))
     counter = []
 
     for element in list_of_words:
@@ -94,10 +94,10 @@ def diferent_word_count(words):
     return diferent_words
 
 
-def top_10_word_count(words):
+def top_10_word_count(change_letters_into_words):
     my_dict = {}
-    for i in range(len(words)):
-        my_dict[words[i]] = words.count(words[i])
+    for i in range(len(change_letters_into_words)):
+        my_dict[change_letters_into_words[i]] = change_letters_into_words.count(change_letters_into_words[i])
     sorted_words = sorted(my_dict.items(), reverse=True, key=lambda x: x[1])
     topten = sorted_words[:10]
     # for ele in topten:
@@ -106,15 +106,15 @@ def top_10_word_count(words):
 
 
 def save_to_file():
-    results = [character_count(), line_count(list), alphanumeric_character_count(), words(open_file=read_from_file()), how_many_words(words),
-               diferent_word_count(words), top_10_word_count(words)]
+    results = [character_count(), line_count(list), alphanumeric_character_count(), change_letters_into_words(open_file=read_from_file()), how_many_words(change_letters_into_words),
+               diferent_word_count(change_letters_into_words), top_10_word_count(change_letters_into_words)]
     print(results)
 
 
-def sort_by_appearance_count(words):
+def sort_by_appearance_count(change_letters_into_words):
     my_dict = {}
-    for i in range(len(words)):
-        my_dict[words[i]] = words.count(words[i])
+    for i in range(len(change_letters_into_words)):
+        my_dict[change_letters_into_words[i]] = change_letters_into_words.count(change_letters_into_words[i])
     sorted_words = sorted(my_dict.items(), reverse=True, key=lambda x: x[1])
     return sorted_words
 
