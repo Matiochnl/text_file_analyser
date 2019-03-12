@@ -3,9 +3,9 @@ import data_manager
 
 def character_count():
     count = 0
-    for elem in data_manager.open_file("resources/input.txt"):
-        for el in elem:
-            if el == " ":
+    for file_element in data_manager.open_file("resources/input.txt"):
+        for element in file_element:
+            if element == " ":
                 count = count
             else:
                 count += 1
@@ -21,10 +21,10 @@ def line_count(list):
 def alphanumeric_character_count():
     count = 0
     alphanumeric_characters = ["qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890"]
-    for elem in data_manager.open_file("resources/input.txt"):
-        for el in elem:
+    for file_element in data_manager.open_file("resources/input.txt"):
+        for element in file_element:
             for alphanumeric_characters_element in alphanumeric_characters:
-                if el in alphanumeric_characters_element:
+                if element in alphanumeric_characters_element:
                     count += 1
     return count
 
