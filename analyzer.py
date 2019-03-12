@@ -25,7 +25,6 @@ def alphanumeric_character_count():
         for el in elem:
             for alphanumeric_characters_element in alphanumeric_characters:
                 if el in alphanumeric_characters_element:
-                    print("DUPA")
                     count += 1
     return count
 
@@ -39,6 +38,23 @@ def count_ratio_a_to_e(list_str):
         if "e" in element or "E" in element:
             e += 1
     result = a / e 
+    result = round(result, 3)
+    return result
+
+
+def consonant_to_vowel_ratio():
+    consonant = ["bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ"]
+    vowel = ["aeiouAEIOU"]
+    consonant_count = 0
+    vowel_count = 0
+    for character in data_manager.open_file_string("resources/input.txt"):
+        for consonant_element in consonant:
+            if character in consonant_element:
+                consonant_count += 1
+        for vowel_elements in vowel:
+            if character in vowel_elements:
+                vowel_count += 1
+    result = consonant_count / vowel_count
     result = round(result, 3)
     return result
 
