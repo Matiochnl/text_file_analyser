@@ -1,7 +1,8 @@
-import data_manager
-
 import datetime
 import sys
+
+import data_manager
+
 
 file_name = sys.argv[1]
 

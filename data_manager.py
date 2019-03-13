@@ -17,5 +17,5 @@ def open_file_string(file_name):
 
 def write_data_to_file(results, file_name):
     with open(file_name, "w") as file:
-        for record in results: 
+        for record in results:
             file.write(str(record) + "\n")
