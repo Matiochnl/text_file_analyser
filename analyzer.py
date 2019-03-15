@@ -47,7 +47,7 @@ def alphanumeric_character_count():
 def count_ratio_a_to_e():
     a = 0
     e = 0
-    for element in read_from_file_string(file_name):
+    for element in read_from_file_string():
         if "a" in element or "A" in element:
             a += 1
         if "e" in element or "E" in element:
@@ -62,7 +62,7 @@ def consonant_to_vowel_ratio():
     vowel = ["aeiouAEIOU"]
     consonant_count = 0
     vowel_count = 0
-    for character in read_from_file_string(file_name):
+    for character in read_from_file_string():
         for consonant_element in consonant:
             if character in consonant_element:
                 consonant_count += 1
@@ -116,7 +116,9 @@ def save_to_file():
                ": Alphanumeric character amount", change_letters_into_words(),
                str(how_many_words()) + ": How many words in file", str(
                    diferent_word_count()) + ": Words not repeated",
-               str(top_10_word_count(change_letters_into_words)) + ": How many times words are used"]
+               str(top_10_word_count(change_letters_into_words)) + ": How many times words are used",
+               str(consonant_to_vowel_ratio()) + ": Consonant to vowel ratio",
+               str(count_ratio_a_to_e()) + ": Letter 'a' to 'e' ratio"]
     actual_time = datetime.datetime.now()
     filename = "{year}_{month}_{day}__{hour}_{minutes}_{seconds}.txt".format(
         year=actual_time.year,
